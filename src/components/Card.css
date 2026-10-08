@@ -1,0 +1,28 @@
+.rk-card {
+  border: 1px solid var(--rk-card-border);
+  border-radius: var(--rk-radius-card);
+  background: var(--rk-white);
+  overflow: hidden;
+}
+
+.rk-card--fill {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.rk-card--fill > .rk-table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* O título ocupa 66px até o cabeçalho da tabela (Relatório das Despesas, Top Vendas no Mês). */
+.rk-card__title {
+  height: 66px;
+  padding: 17px 18px 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+}

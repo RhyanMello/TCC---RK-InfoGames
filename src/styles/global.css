@@ -1,0 +1,108 @@
+/* Tokens extraídos do Figma (TCC.pdf). */
+:root {
+  --rk-yellow: #fff600;
+  --rk-yellow-border: rgba(0, 0, 0, 0.2);
+  --rk-chart-yellow: #ffd900;
+  --rk-black: #000000;
+  --rk-bg: #f9f8f6;
+  --rk-white: #ffffff;
+  --rk-red: #ff0000;
+  --rk-text: #000000;
+  --rk-text-muted: rgba(0, 0, 0, 0.5);
+  --rk-text-placeholder: rgba(0, 0, 0, 0.4);
+  --rk-sidebar-text: rgba(255, 255, 255, 0.75);
+  --rk-sidebar-active-text: #423f3f;
+  --rk-sidebar-divider: rgba(255, 255, 255, 0.25);
+  --rk-card-border: #ccc5c5;
+  --rk-row-border: #b3b3b3;
+  --rk-input-border: #cccccc;
+  --rk-search-bg: rgba(217, 217, 217, 0.5);
+  --rk-search-border: rgba(0, 0, 0, 0.3);
+  --rk-overlay: rgba(0, 0, 0, 0.8);
+
+  --rk-sidebar-width: 231px;
+  --rk-radius-card: 8px;
+  --rk-radius-button: 8px;
+  --rk-radius-modal: 25px;
+  --rk-radius-pill: 999px;
+
+  --rk-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rk-font-pixel: 'Press Start 2P', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--rk-font);
+  color: var(--rk-text);
+  background: var(--rk-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rk-black);
+  outline-offset: 2px;
+}
+
+/* Ícones do Figma aplicados como máscara, herdando a cor do texto. */
+.rk-icon {
+  display: inline-block;
+  flex: none;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media print {
+  .rk-sidebar,
+  .rk-no-print {
+    display: none !important;
+  }
+  .rk-main {
+    margin: 0 !important;
+  }
+}

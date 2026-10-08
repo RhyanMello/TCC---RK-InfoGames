@@ -1,0 +1,96 @@
+.rk-table-wrap {
+  overflow-x: auto;
+}
+
+.rk-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.rk-table th,
+.rk-table td {
+  padding: 0 8px;
+  border-bottom: 1px solid var(--rk-row-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rk-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 37px;
+  border-bottom: 0;
+  background: var(--rk-white);
+  box-shadow: inset 0 -1px 0 var(--rk-row-border);
+  padding-top: 4px;
+  color: var(--rk-text-muted);
+  font-weight: 600;
+}
+
+.rk-table td {
+  height: 43px;
+  font-weight: 600;
+}
+
+.rk-table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.rk-table__cell--left {
+  text-align: left;
+}
+
+.rk-table__cell--center {
+  text-align: center;
+}
+
+/* Texto secundário (ex.: datas em cinza na tela Produtos Vendidos). */
+.rk-table__muted {
+  color: var(--rk-text-muted);
+}
+
+.rk-table__negative {
+  color: var(--rk-red);
+}
+
+.rk-table__status {
+  padding: 24px 8px;
+  color: var(--rk-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rk-table__status--error {
+  color: var(--rk-red);
+}
+
+.rk-table__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rk-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--rk-black);
+}
+
+.rk-icon-btn--danger {
+  color: var(--rk-red);
+}
+
+.rk-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}

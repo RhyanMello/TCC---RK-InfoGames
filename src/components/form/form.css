@@ -1,0 +1,136 @@
+.rk-form-row {
+  display: flex;
+  gap: 6px;
+}
+
+/* Espaço extra entre campos (Valor e Tipo em Nova Despesa). */
+.rk-form-spacer {
+  flex: 0 0 25px;
+}
+
+.rk-field {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rk-field__label {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.rk-field__error {
+  margin-top: 4px;
+  padding-left: 12px;
+  color: var(--rk-red);
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.rk-input {
+  width: 100%;
+  height: 33px;
+  padding: 0 14px;
+  border: 1px solid var(--rk-input-border);
+  border-radius: var(--rk-radius-pill);
+  background: var(--rk-white);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.rk-input::placeholder {
+  color: var(--rk-text-placeholder);
+}
+
+.rk-input:focus {
+  border-color: var(--rk-black);
+  box-shadow: 0 0 0 2px var(--rk-yellow);
+}
+
+.rk-input[aria-invalid='true'] {
+  border-color: var(--rk-red);
+}
+
+.rk-input[aria-invalid='true']:focus {
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.15);
+}
+
+textarea.rk-input {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 14px;
+  border-radius: 16px;
+  line-height: 18px;
+  resize: vertical;
+}
+
+.rk-select {
+  position: relative;
+}
+
+.rk-select select {
+  padding-right: 36px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.rk-select__chevron {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  color: var(--rk-black);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Combobox (cliente / produto) */
+.rk-combobox {
+  position: relative;
+}
+
+.rk-combobox__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  max-height: 180px;
+  margin: 0;
+  padding: 4px 0;
+  overflow-y: auto;
+  border: 1px solid var(--rk-input-border);
+  border-radius: 12px;
+  background: var(--rk-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  list-style: none;
+}
+
+.rk-combobox__option {
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.rk-combobox__option--active {
+  background: var(--rk-yellow);
+}
+
+.rk-combobox__hint {
+  padding: 7px 14px;
+  color: var(--rk-text-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .rk-form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .rk-form-row .rk-field {
+    flex: 1 1 auto !important;
+  }
+}

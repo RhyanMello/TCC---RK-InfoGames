@@ -1,0 +1,157 @@
+/*
+ * Coordenadas em pixels do quadro de login do Figma (1350 x 886).
+ * --ox/--oy/--w definem o recorte visível; --u converte 1px do Figma para o tamanho atual da tela.
+ */
+.rk-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background: var(--rk-white);
+}
+
+.rk-login__frame {
+  --ox: 0;
+  --oy: 0;
+  --w: 1350;
+  --h: 886;
+  --u: calc(100cqw / var(--w));
+  container-type: inline-size;
+  position: relative;
+  width: min(1350px, 100%, calc((100vh - 32px) * 1350 / 886));
+  aspect-ratio: 1350 / 886;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--rk-black);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+}
+
+/* A arte fica num pseudo-elemento para que as unidades cqw se refiram ao próprio quadro. */
+.rk-login__frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../../assets/login-art.jpg') no-repeat;
+  background-size: calc(1350 * var(--u)) auto;
+  background-position: calc(var(--ox) * var(--u) * -1) calc(var(--oy) * var(--u) * -1);
+}
+
+/* Elementos posicionados com as medidas do Figma. */
+.rk-login__frame > * {
+  position: absolute;
+}
+
+.rk-login__input {
+  left: calc((449 - var(--ox)) * var(--u));
+  width: calc(210 * var(--u));
+  height: calc(18 * var(--u));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--rk-white);
+  font-family: var(--rk-font-pixel);
+  font-size: calc(10 * var(--u));
+  outline: none;
+}
+
+.rk-login__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.rk-login__input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.rk-login__input--usuario {
+  top: calc((331 - var(--oy)) * var(--u));
+}
+
+.rk-login__input--senha {
+  top: calc((409 - var(--oy)) * var(--u));
+}
+
+/* Áreas clicáveis sobre o botão "entrar" e o link "Esqueci a Senha" da arte. */
+.rk-login__hit {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.rk-login__entrar {
+  left: calc((481 - var(--ox)) * var(--u));
+  top: calc((479 - var(--oy)) * var(--u));
+  width: calc(146 * var(--u));
+  height: calc(27 * var(--u));
+  border-radius: var(--rk-radius-pill);
+}
+
+.rk-login__entrar:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.rk-login__entrar:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.rk-login__esqueci {
+  left: calc((501 - var(--ox)) * var(--u));
+  top: calc((529 - var(--oy)) * var(--u));
+  width: calc(105 * var(--u));
+  height: calc(20 * var(--u));
+}
+
+.rk-login__esqueci:hover {
+  box-shadow: inset 0 calc(-1 * var(--u)) 0 var(--rk-yellow);
+}
+
+.rk-login__lembrar {
+  left: calc((499 - var(--ox)) * var(--u));
+  top: calc((571 - var(--oy)) * var(--u));
+  display: flex;
+  width: calc(110 * var(--u));
+  height: calc(16 * var(--u));
+  cursor: pointer;
+}
+
+.rk-login__lembrar input {
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  margin: 0;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+}
+
+.rk-login__lembrar input:checked {
+  background: var(--rk-yellow);
+  box-shadow: inset 0 0 0 calc(4 * var(--u)) rgba(255, 255, 255, 0.25);
+}
+
+.rk-login__mensagem {
+  left: calc((440 - var(--ox)) * var(--u));
+  top: calc((600 - var(--oy)) * var(--u));
+  width: calc(228 * var(--u));
+  color: #ff4d4d;
+  font-size: calc(9 * var(--u));
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* Celular: mostra só o cartão de login + logo, em tamanho legível. */
+@media (max-width: 700px) {
+  .rk-login {
+    padding: 0;
+    background: var(--rk-black);
+  }
+  .rk-login__frame {
+    --ox: 425;
+    --oy: 175;
+    --w: 500;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 500 / 495;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

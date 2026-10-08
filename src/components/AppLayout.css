@@ -1,0 +1,47 @@
+.rk-main {
+  min-height: 100vh;
+  margin-left: var(--rk-sidebar-width);
+  background: var(--rk-bg);
+}
+
+/* Área útil de cada página: 36px da sidebar e 22px da borda direita, como no Figma. */
+.rk-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 56px 22px 58px 36px;
+}
+
+/* Telas de listagem: a tabela vai até 58px do rodapé e rola por dentro, como no Figma. */
+.rk-page--fixed {
+  height: 100vh;
+}
+
+@media (max-width: 640px), (max-height: 560px) {
+  .rk-page--fixed {
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .rk-main {
+    margin-left: 72px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rk-page {
+    padding: 32px 16px;
+  }
+}
+
+/* Tabela principal das listagens: 67px abaixo do cabeçalho (Estoque, Produtos Vendidos, Serviços Prestados). */
+.rk-page__table {
+  margin-top: 67px;
+}
+
+@media (max-width: 1180px) {
+  .rk-page__table {
+    margin-top: 32px;
+  }
+}

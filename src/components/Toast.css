@@ -1,0 +1,30 @@
+.rk-toast-region {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 200;
+}
+
+/* Mesmo vocabulário visual da sidebar: fundo preto, texto branco e destaque amarelo. */
+.rk-toast {
+  padding: 12px 18px 12px 16px;
+  border-left: 6px solid var(--rk-yellow);
+  border-radius: var(--rk-radius-button);
+  background: var(--rk-black);
+  color: var(--rk-white);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: rk-toast-in 0.2s ease-out;
+}
+
+.rk-toast--erro {
+  border-left-color: var(--rk-red);
+}
+
+@keyframes rk-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

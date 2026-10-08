@@ -1,0 +1,26 @@
+/* No Figma esta tela é deslocada: título a 25px da sidebar e cards a 24px. */
+.rk-page--gastos {
+  padding: 56px 34px 27px 24px;
+}
+
+.rk-page--gastos .rk-page-header {
+  grid-template-columns: 1fr auto;
+  padding-right: 0;
+}
+
+.rk-gastos__stats {
+  margin-top: 41px;
+}
+
+.rk-gastos__report {
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .rk-page--gastos {
+    padding: 32px 16px;
+  }
+  .rk-gastos__stats {
+    margin-top: 24px;
+  }
+}

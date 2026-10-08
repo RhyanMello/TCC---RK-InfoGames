@@ -1,0 +1,121 @@
+.rk-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  width: var(--rk-sidebar-width);
+  background: var(--rk-black);
+  color: var(--rk-white);
+  overflow-y: auto;
+}
+
+.rk-sidebar__user {
+  position: relative;
+  height: 98px;
+  border-bottom: 1px solid var(--rk-sidebar-divider);
+}
+
+.rk-sidebar__logo {
+  position: absolute;
+  left: 16px;
+  top: 35px;
+  width: 44px;
+  height: 44px;
+}
+
+.rk-sidebar__name {
+  position: absolute;
+  left: 72px;
+  top: 47px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.rk-sidebar__logout {
+  position: absolute;
+  left: 175px;
+  top: 69px;
+  width: 30px;
+  height: 11px;
+  padding: 0;
+  border: 0.5px solid var(--rk-white);
+  border-radius: var(--rk-radius-pill);
+  background: var(--rk-black);
+  color: var(--rk-white);
+  font-size: 7px;
+  line-height: 9px;
+}
+
+.rk-sidebar__logout:hover {
+  background: var(--rk-white);
+  color: var(--rk-black);
+}
+
+.rk-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 9px;
+}
+
+.rk-sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  border-radius: 10px;
+  color: var(--rk-sidebar-text);
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.rk-sidebar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  color: var(--rk-white);
+}
+
+.rk-sidebar__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.rk-sidebar__link.active {
+  background: var(--rk-yellow);
+  color: var(--rk-sidebar-active-text);
+}
+
+.rk-sidebar__link.active .rk-sidebar__icon {
+  color: var(--rk-black);
+}
+
+/* Telas menores: a sidebar vira uma coluna só de ícones. */
+@media (max-width: 900px) {
+  .rk-sidebar {
+    width: 72px;
+  }
+  .rk-sidebar__logo {
+    left: 14px;
+  }
+  .rk-sidebar__name {
+    display: none;
+  }
+  .rk-sidebar__logout {
+    left: 21px;
+    top: 84px;
+  }
+  .rk-sidebar__user {
+    height: 108px;
+  }
+  .rk-sidebar__nav {
+    padding: 16px 8px;
+  }
+  .rk-sidebar__label {
+    display: none;
+  }
+}

@@ -1,0 +1,63 @@
+.rk-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rk-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+  padding: 12px 10px 10px;
+  border: 1px solid var(--rk-card-border);
+  border-radius: var(--rk-radius-card);
+  background: var(--rk-white);
+}
+
+.rk-stat__label {
+  padding-right: 40px;
+  color: var(--rk-text-muted);
+  font-size: 11px;
+  line-height: 13px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rk-stat__label--compact {
+  padding-right: 0;
+  font-size: 10px;
+}
+
+.rk-stat__value {
+  margin-top: 1px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  white-space: nowrap;
+}
+
+.rk-stat--center .rk-stat__value {
+  text-align: center;
+}
+
+.rk-stat__icon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: var(--rk-chart-yellow);
+}
+
+@media (max-width: 1180px) {
+  .rk-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .rk-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

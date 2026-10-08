@@ -1,0 +1,170 @@
+.rk-page--faturamento {
+  padding: 19px 30px 33px 29px;
+}
+
+.rk-faturamento__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px 0 7px;
+}
+
+.rk-faturamento__title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.rk-faturamento__stats {
+  margin-top: 28px;
+}
+
+.rk-faturamento__charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 43px;
+}
+
+.rk-faturamento__top {
+  margin-top: 50px;
+}
+
+.rk-faturamento__top .rk-card__title {
+  font-weight: 500;
+}
+
+.rk-chart {
+  height: 254px;
+  padding: 13px 11px 10px;
+}
+
+.rk-chart__title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.rk-chart__empty {
+  padding-top: 80px;
+  color: var(--rk-text-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Gráfico de barras */
+.rk-bars {
+  display: flex;
+  height: 192px;
+  margin-top: 19px;
+}
+
+.rk-bars__axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 72px;
+  height: 168px;
+  margin-top: -4px;
+  padding-right: 6px;
+  color: var(--rk-text-muted);
+  font-size: 7px;
+  line-height: 9px;
+  text-align: right;
+}
+
+.rk-bars__plot {
+  display: flex;
+  flex: 1;
+  height: 164px;
+  border-left: 1px dashed #d9d9d9;
+  background: repeating-linear-gradient(to bottom, #e6e6e6 0 1px, transparent 1px 41px);
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.rk-bars__col {
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  border-right: 1px dashed #d9d9d9;
+}
+
+.rk-bars__track {
+  display: flex;
+  align-items: flex-end;
+  width: 77px;
+  max-width: 76%;
+  height: 100%;
+}
+
+.rk-bars__bar {
+  width: 100%;
+  min-height: 2px;
+  border-radius: 8px 8px 0 0;
+  background: var(--rk-chart-yellow);
+}
+
+.rk-bars__label {
+  position: absolute;
+  bottom: -13px;
+  color: var(--rk-text-muted);
+  font-size: 7px;
+  line-height: 9px;
+}
+
+/* Gráfico de pizza */
+.rk-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+  padding: 0 120px 0 10px;
+}
+
+.rk-pie__legend {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.rk-pie__swatch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 2px;
+}
+
+.rk-pie__svg {
+  width: 176px;
+  height: 176px;
+  flex: none;
+}
+
+@media (max-width: 1180px) {
+  .rk-faturamento__charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rk-pie {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rk-page--faturamento {
+    padding: 24px 16px;
+  }
+  .rk-faturamento__header {
+    padding: 0;
+  }
+  .rk-pie {
+    padding: 0;
+  }
+  .rk-pie__svg {
+    width: 140px;
+    height: 140px;
+  }
+}
