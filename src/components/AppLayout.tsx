@@ -2,12 +2,14 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { api } from '../api/client';
 import { clearSessao } from '../auth/session';
 import { useSessao } from '../auth/useSessao';
+import { useFigmaScale } from '../hooks/useFigmaScale';
 import { Sidebar } from './Sidebar';
 import { ToastProvider } from './Toast';
 import './AppLayout.css';
 
 export function AppLayout() {
   const sessao = useSessao();
+  useFigmaScale();
   if (!sessao) return <Navigate to="/login" replace />;
 
   async function sair() {

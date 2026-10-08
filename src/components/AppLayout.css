@@ -1,5 +1,5 @@
 .rk-main {
-  min-height: 100vh;
+  min-height: calc(100vh / var(--rk-zoom, 1));
   margin-left: var(--rk-sidebar-width);
   background: var(--rk-bg);
 }
@@ -8,13 +8,13 @@
 .rk-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh / var(--rk-zoom, 1));
   padding: 56px 22px 58px 36px;
 }
 
 /* Telas de listagem: a tabela vai até 58px do rodapé e rola por dentro, como no Figma. */
 .rk-page--fixed {
-  height: 100vh;
+  height: calc(100vh / var(--rk-zoom, 1));
 }
 
 @media (max-width: 640px), (max-height: 560px) {
@@ -40,7 +40,7 @@
   margin-top: 67px;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1023px) {
   .rk-page__table {
     margin-top: 32px;
   }

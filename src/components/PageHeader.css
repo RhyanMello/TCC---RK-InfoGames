@@ -33,7 +33,7 @@
   justify-self: end;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1023px) {
   .rk-page-header {
     grid-template-columns: auto 1fr;
     gap: 16px 24px;
