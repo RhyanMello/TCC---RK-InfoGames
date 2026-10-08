@@ -5,6 +5,11 @@ const FIGMA_W = 1350;
 const FIGMA_H = 887;
 /** Abaixo desta largura vale o layout responsivo (sidebar só de ícones, tabelas com rolagem). */
 const DESKTOP_MIN = 1024;
+/** Quanto do espaço da tela o layout ocupa (1 = encosta nas bordas). Menor = elementos menores. */
+const DENSIDADE = 0.6;
+/** Limites do fator de escala: nunca maior que o tamanho original do Figma. */
+const ZOOM_MIN = 0.7;
+const ZOOM_MAX = 1;
 
 /**
  * Em telas de computador, amplia ou reduz todo o sistema na mesma proporção do Figma,
@@ -17,7 +22,8 @@ export function useFigmaScale() {
 
     function aplicar() {
       const { innerWidth: w, innerHeight: h } = window;
-      const zoom = w < DESKTOP_MIN ? 1 : Math.min(Math.max(Math.min(w / FIGMA_W, h / FIGMA_H), 0.8), 2);
+      const ideal = Math.min(w / FIGMA_W, h / FIGMA_H) * DENSIDADE;
+      const zoom = w < DESKTOP_MIN ? 1 : Math.min(Math.max(ideal, ZOOM_MIN), ZOOM_MAX);
       root.style.zoom = String(zoom);
       root.style.setProperty('--rk-zoom', String(zoom));
     }
