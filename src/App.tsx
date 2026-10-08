@@ -4,11 +4,13 @@ import { EstoquePage } from './pages/estoque/EstoquePage';
 import { FaturamentoPage } from './pages/faturamento/FaturamentoPage';
 import { GastosPage } from './pages/gastos/GastosPage';
 import { LoginPage } from './pages/login/LoginPage';
+import { RelatorioPage } from './pages/relatorio/RelatorioPage';
 import { ServicosPage } from './pages/servicos/ServicosPage';
 import { ProdutosVendidosPage } from './pages/vendas/ProdutosVendidosPage';
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
+  { path: '/relatorio/:mes', element: <RelatorioPage /> },
   {
     element: <AppLayout />,
     children: [

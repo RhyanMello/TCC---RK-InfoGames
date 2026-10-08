@@ -78,3 +78,18 @@ export interface Dashboard {
   vendasPorCategoria: { categoria: string; total: number }[];
   topVendas: { produto: string; qtd: number; total: number }[];
 }
+
+export interface Relatorio {
+  mes: string;
+  vendas: { id: number; data: string; cliente: string; produto: string; pagamento: string; qtd: number; valor: number }[];
+  servicos: { id: number; data: string; cliente: string; tipo: string; descricao: string; valor: number }[];
+  despesas: { id: number; data: string; nome: string; tipo: string; valor: number }[];
+  totais: {
+    vendas: number;
+    itensVendidos: number;
+    servicos: number;
+    faturamento: number;
+    despesas: number;
+    lucro: number;
+  };
+}

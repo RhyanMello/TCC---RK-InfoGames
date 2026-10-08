@@ -8,6 +8,7 @@ import { clientesRouter } from './routes/clientes.ts';
 import { dashboardRouter } from './routes/dashboard.ts';
 import { despesasRouter } from './routes/despesas.ts';
 import { produtosRouter } from './routes/produtos.ts';
+import { relatorioRouter } from './routes/relatorio.ts';
 import { servicosRouter } from './routes/servicos.ts';
 import { vendasRouter } from './routes/vendas.ts';
 
@@ -25,6 +26,7 @@ app.use('/api/produtos', produtosRouter);
 app.use('/api/vendas', vendasRouter);
 app.use('/api/despesas', despesasRouter);
 app.use('/api/servicos', servicosRouter);
+app.use('/api/relatorio', relatorioRouter);
 app.use(errorHandler);
 
 // Em produção (npm run build && npm start) a própria API serve o front-end compilado.

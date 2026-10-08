@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Dashboard } from '../../api/types';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
@@ -6,12 +7,14 @@ import { StatCard } from '../../components/StatCard';
 import { useApi } from '../../hooks/useApi';
 import { formatBRL, monthName } from '../../utils/format';
 import { BarChart, PieChart } from './charts';
+import { RelatorioModal } from './RelatorioModal';
 import './FaturamentoPage.css';
 
 type TopVenda = Dashboard['topVendas'][number];
 
 export function FaturamentoPage() {
   const { data, loading, error } = useApi<Dashboard>('/dashboard');
+  const [gerarRelatorio, setGerarRelatorio] = useState(false);
 
   const columns: Column<TopVenda>[] = [
     { key: 'produto', header: 'Produto', width: 55, align: 'left', render: (t) => t.produto },
@@ -24,7 +27,7 @@ export function FaturamentoPage() {
     <div className="rk-page rk-page--faturamento">
       <header className="rk-faturamento__header">
         <h1 className="rk-faturamento__title">Faturamento Mensal</h1>
-        <Button variant="pill" className="rk-no-print" onClick={() => window.print()}>
+        <Button variant="pill" className="rk-no-print" onClick={() => setGerarRelatorio(true)}>
           Gerar Relatório
         </Button>
       </header>
@@ -58,6 +61,8 @@ export function FaturamentoPage() {
           minWidth={560}
         />
       </Card>
+
+      {gerarRelatorio && <RelatorioModal onClose={() => setGerarRelatorio(false)} />}
     </div>
   );
 }
