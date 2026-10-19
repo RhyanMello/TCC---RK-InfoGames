@@ -74,8 +74,8 @@ export interface Dashboard {
   totalVendas: number;
   lucro: number;
   lucroServicos: number;
-  faturamentoPorMes: { mes: string; total: number }[];
-  vendasPorCategoria: { categoria: string; total: number }[];
+  faturamentoPorMes: { mes: string; total: number; vendas: number; servicos: number }[];
+  vendasPorCategoria: { categoria: string; total: number; qtd: number }[];
   topVendas: { produto: string; qtd: number; total: number }[];
 }
 

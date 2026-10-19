@@ -74,8 +74,10 @@
 }
 
 .rk-bars__plot {
+  position: relative;
   display: flex;
   flex: 1;
+  min-width: 0;
   height: 164px;
   border-left: 1px dashed #d9d9d9;
   background: repeating-linear-gradient(to bottom, #e6e6e6 0 1px, transparent 1px 41px);
@@ -86,6 +88,7 @@
   position: relative;
   display: flex;
   flex: 1;
+  min-width: 0;
   justify-content: center;
   border-right: 1px dashed #d9d9d9;
 }
@@ -103,6 +106,18 @@
   min-height: 2px;
   border-radius: 8px 8px 0 0;
   background: var(--rk-chart-yellow);
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.rk-bars__bar:hover,
+.rk-bars__bar.is-active {
+  filter: brightness(0.9);
+}
+
+.rk-bars__bar:focus-visible {
+  outline: 2px solid var(--rk-black);
+  outline-offset: 2px;
 }
 
 .rk-bars__label {
@@ -118,8 +133,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   height: 200px;
-  padding: 0 120px 0 10px;
+  /* 120px de folga à direita como no Figma, reduzida quando o cartão fica estreito. */
+  padding: 0 clamp(8px, calc((100% - 340px) * 0.9), 120px) 0 10px;
 }
 
 .rk-pie__legend {
@@ -128,6 +145,7 @@
   list-style: none;
   font-size: 11px;
   line-height: 18px;
+  white-space: nowrap;
 }
 
 .rk-pie__swatch {
@@ -138,10 +156,100 @@
   border-radius: 2px;
 }
 
+.rk-pie__legend li {
+  cursor: default;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.rk-pie__legend li.is-active {
+  background: rgba(0, 0, 0, 0.06);
+  font-weight: 600;
+}
+
+.rk-pie__figure {
+  position: relative;
+  flex: none;
+}
+
 .rk-pie__svg {
+  display: block;
   width: 176px;
   height: 176px;
-  flex: none;
+  overflow: visible;
+}
+
+.rk-pie__slice {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.rk-pie__slice.is-dim {
+  opacity: 0.45;
+}
+
+/* Caixa de detalhes dos gráficos */
+.rk-tooltip {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 132px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: rgba(20, 20, 20, 0.92);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  color: #fff;
+  font-size: 11px;
+  line-height: 15px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.rk-tooltip__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rk-tooltip__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.rk-tooltip__row b {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Barras: acima do topo da barra (ou por dentro, se ela for alta). */
+.rk-tooltip--bar {
+  --rk-tooltip-w: 172px;
+  width: var(--rk-tooltip-w);
+  min-width: 0;
+}
+
+.rk-tooltip--bar.rk-tooltip--inside {
+  transform: translateY(100%);
+}
+
+/* Pizza: no meio da fatia, puxada para dentro do cartão nas fatias das laterais. */
+.rk-tooltip--pie {
+  transform: translate(-50%, -50%);
+}
+
+.rk-tooltip--pie.rk-tooltip--start {
+  transform: translate(-15%, -50%);
+}
+
+.rk-tooltip--pie.rk-tooltip--end {
+  transform: translate(-85%, -50%);
 }
 
 @media (max-width: 1023px) {
@@ -149,7 +257,9 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .rk-pie {
-    padding-right: 40px;
+    justify-content: center;
+    gap: 56px;
+    padding: 0 10px;
   }
 }
 
@@ -162,8 +272,18 @@
     gap: 12px;
     padding: 0;
   }
+  /* No celular a legenda fica embaixo da pizza, para os dois caberem na largura do cartão. */
+  .rk-chart:has(.rk-pie) {
+    height: auto;
+  }
   .rk-pie {
-    padding: 0;
+    flex-direction: column-reverse;
+    gap: 12px;
+    height: auto;
+    padding: 12px 0 4px;
+  }
+  .rk-bars__axis {
+    width: 52px;
   }
   .rk-pie__svg {
     width: 140px;

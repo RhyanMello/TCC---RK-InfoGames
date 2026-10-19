@@ -17,7 +17,7 @@ dashboardRouter.get('/', (_req, res) => {
 
   const vendasPorCategoria = db
     .prepare(
-      `SELECT IFNULL(p.categoria, 'Outros') AS categoria, SUM(v.valor) AS total
+      `SELECT IFNULL(p.categoria, 'Outros') AS categoria, SUM(v.valor) AS total, SUM(v.qtd) AS qtd
        FROM vendas v LEFT JOIN produtos p ON p.id = v.produto_id
        WHERE strftime('%Y-%m', v.data) = ?
        GROUP BY 1 ORDER BY total DESC`,
@@ -38,7 +38,11 @@ dashboardRouter.get('/', (_req, res) => {
     totalVendas: soma("SELECT COUNT(*) AS v FROM vendas WHERE strftime('%Y-%m', data) = ?", mes),
     lucro: vendasMes + servicosMes - despesasMes,
     lucroServicos: servicosMes,
-    faturamentoPorMes: ultimosMeses(4).map((m) => ({ mes: m, total: totalVendas(m) + totalServicos(m) })),
+    faturamentoPorMes: ultimosMeses(4).map((m) => {
+      const vendas = totalVendas(m);
+      const servicos = totalServicos(m);
+      return { mes: m, total: vendas + servicos, vendas, servicos };
+    }),
     vendasPorCategoria,
     topVendas,
   });
