@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
 
-// Tamanho do quadro das telas no Figma.
-const FIGMA_W = 1350;
-const FIGMA_H = 887;
+/** Largura (em px do Figma) que o sistema ocupa no computador: um pouco menor que o quadro de 1350 do Figma, para tudo aparecer maior. */
+const LARGURA_BASE = 1250;
 /** Abaixo desta largura vale o layout responsivo (sidebar só de ícones, tabelas com rolagem). */
 const DESKTOP_MIN = 1024;
-/** Quanto do espaço da tela o layout ocupa (1 = encosta nas bordas). Menor = elementos menores. */
-const DENSIDADE = 0.6;
-/** Limites do fator de escala: nunca maior que o tamanho original do Figma. */
-const ZOOM_MIN = 0.7;
-const ZOOM_MAX = 1;
+const CELULAR_MAX = 640;
+/**
+ * Os textos do Figma são pequenos (tabelas com 12px), então o sistema é ampliado conforme a tela:
+ * no computador acompanha a largura (cerca de 1.1 num notebook 1366, 1.5 num monitor Full HD e até
+ * 1.6 em 2K/4K), sem ficar abaixo de 1 para o cabeçalho e as tabelas caberem em 1024px.
+ * Tablets e celulares têm um fator fixo, que deixa o layout responsivo legível e sem rolagem lateral.
+ */
+const ZOOM_MIN = 1;
+const ZOOM_MAX = 1.6;
+const ZOOM_TABLET = 1.15;
+const ZOOM_CELULAR = 1.05;
 
 /**
  * Em telas de computador, amplia ou reduz todo o sistema na mesma proporção do Figma,
@@ -21,9 +26,13 @@ export function useFigmaScale() {
     const root = document.documentElement;
 
     function aplicar() {
-      const { innerWidth: w, innerHeight: h } = window;
-      const ideal = Math.min(w / FIGMA_W, h / FIGMA_H) * DENSIDADE;
-      const zoom = w < DESKTOP_MIN ? 1 : Math.min(Math.max(ideal, ZOOM_MIN), ZOOM_MAX);
+      const w = window.innerWidth;
+      const zoom =
+        w < CELULAR_MAX
+          ? ZOOM_CELULAR
+          : w < DESKTOP_MIN
+            ? ZOOM_TABLET
+            : Math.min(Math.max(w / LARGURA_BASE, ZOOM_MIN), ZOOM_MAX);
       root.style.zoom = String(zoom);
       root.style.setProperty('--rk-zoom', String(zoom));
     }

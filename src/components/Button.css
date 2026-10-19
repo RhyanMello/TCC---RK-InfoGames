@@ -33,8 +33,8 @@
 }
 
 .rk-btn--pill {
-  height: 20px;
-  padding: 0 21px;
+  height: 30px;
+  padding: 0 22px;
   border-radius: var(--rk-radius-pill);
   font-size: 14px;
   font-weight: 500;
@@ -42,16 +42,16 @@
 
 .rk-btn--primary,
 .rk-btn--secondary {
-  height: 22px;
-  min-width: 57px;
-  padding: 0 14px;
+  height: 32px;
+  min-width: 72px;
+  padding: 0 18px;
   border-radius: var(--rk-radius-pill);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 }
 
 .rk-btn--secondary {
-  min-width: 84px;
+  min-width: 96px;
   border-color: var(--rk-input-border);
   background: var(--rk-white);
 }

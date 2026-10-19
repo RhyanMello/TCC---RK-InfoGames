@@ -1,14 +1,15 @@
 /*
  * Login do Figma em tela cheia.
  * --u: escala do fundo, ampliado até cobrir a tela inteira.
- * --c: escala do cartão e da logo juntos (1 = tamanho do Figma), mais contida para ficar
- *      proporcional em qualquer monitor e sempre caber no celular. O lado preto e a logo
+ * --c: escala do cartão e da logo juntos (1 = tamanho do Figma). Cresce com a altura da tela
+ *      (o cartão ocupa pouco mais da metade dela), nunca fica menor que o Figma em notebooks
+ *      e é limitada para sempre caber na tela e no celular. O lado preto e a logo
  *      têm sempre a mesma altura, como no Figma.
  * Tudo é posicionado a partir do centro da tela, onde termina o amarelo e começa o preto.
  */
 .rk-login {
   --u: max(100vw / 1334, 100vh / 870);
-  --c: min(100vh / 1440, 100vw / 750);
+  --c: min(max(100vh / 900, 1px), 100vh / 600, 100vw / 520);
   position: fixed;
   inset: 0;
   overflow: hidden;

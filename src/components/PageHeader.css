@@ -2,6 +2,7 @@
 .rk-page-header {
   display: grid;
   grid-template-columns: 277px minmax(0, 423px) 1fr;
+  column-gap: 16px;
   align-items: center;
   min-height: 44px;
   padding-right: 12px;
@@ -56,5 +57,17 @@
   }
   .rk-page-header__title {
     white-space: normal;
+  }
+  /* No celular o botão desce para baixo do título, para não passar da borda da tela. */
+  .rk-page-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rk-page-header__action {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+  .rk-page-header__search {
+    grid-row: 3;
   }
 }
